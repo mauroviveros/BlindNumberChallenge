@@ -1,3 +1,12 @@
+## [1.0.2](https://github.com/maurodviveros/blindnumberchallenge/compare/v1.0.1...v1.0.2) (2023-05-14)
+
+
+### Bug Fixes
+
+* :rocket: fix base href ([7680f4a](https://github.com/maurodviveros/blindnumberchallenge/commit/7680f4a035f4c3e220dc3af6769258b632356a95))
+
+
+
 ## [1.0.1](https://github.com/maurodviveros/blindnumberchallenge/compare/v1.0.0...v1.0.1) (2023-05-14)
 
 

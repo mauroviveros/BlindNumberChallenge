@@ -1,14 +1,21 @@
 {
-  "name": "blindnumber",
-  "type": "module",
+  "name": "blindnumberchallenge",
+  "description": "#BlindNumberChallenge",
+  "author": "Mauro Daniel Viveros <maurod.viveros@gmail.com> (TRY Ubbe)",
   "version": "0.0.1",
+  "private": true,
+  "type": "module",
   "scripts": {
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
+    "postversion": "git push && git push --tags"
   },
   "dependencies": {
-    "astro": "^2.4.1"
+    "astro": "2.4.1"
+  },
+  "devDependencies": {
+    "conventional-changelog-cli": "2.2.2"
   }
 }

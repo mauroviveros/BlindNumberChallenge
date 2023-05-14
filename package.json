@@ -3,6 +3,7 @@
   "description": "#BlindNumberChallenge",
   "author": "Mauro Daniel Viveros <maurod.viveros@gmail.com> (TRY Ubbe)",
   "version": "0.0.1",
+  "license": "MIT",
   "private": true,
   "type": "module",
   "scripts": {
@@ -11,6 +12,10 @@
     "preview": "astro preview",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
     "postversion": "git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maurodviveros/blindnumberchallenge.git"
   },
   "dependencies": {
     "astro": "2.4.1"

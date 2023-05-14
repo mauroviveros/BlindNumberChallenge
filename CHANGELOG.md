@@ -1,3 +1,12 @@
+## [1.1.2](https://github.com/maurodviveros/blindnumberchallenge/compare/v1.1.1...v1.1.2) (2023-05-14)
+
+
+### Bug Fixes
+
+* :ambulance: remove prompt for testing ([793aac0](https://github.com/maurodviveros/blindnumberchallenge/commit/793aac0dd9f937da714af770542618b085d3436f))
+
+
+
 ## [1.1.1](https://github.com/maurodviveros/blindnumberchallenge/compare/v1.1.0...v1.1.1) (2023-05-14)
 
 

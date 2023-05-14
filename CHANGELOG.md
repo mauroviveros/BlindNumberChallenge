@@ -1,3 +1,12 @@
+## [1.0.3](https://github.com/maurodviveros/blindnumberchallenge/compare/v1.0.2...v1.0.3) (2023-05-14)
+
+
+### Bug Fixes
+
+* :poop: remove poop text ([68e1fae](https://github.com/maurodviveros/blindnumberchallenge/commit/68e1fae4bdd86bda7ad2db4fd172be289b493393))
+
+
+
 ## [1.0.2](https://github.com/maurodviveros/blindnumberchallenge/compare/v1.0.1...v1.0.2) (2023-05-14)
 
 

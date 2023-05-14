@@ -13,6 +13,10 @@ $ npm install
 $ npm start
 ```
 
+## 📜 License
+MIT © [Mauro Daniel Viveros][github-profile]
+
+
 
 [github-profile]: https://github.com/maurodviveros
 [nodejs]: https://nodejs.org

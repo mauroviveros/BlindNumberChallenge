@@ -223,6 +223,12 @@ const defaultLevel = levels[1]._id;
 		reloadBtnRef.classList.remove("pulse");
 		messageElem.innerHTML = "";
 		draggableElem.setAttribute("draggable", true);
+
+		if(isMobile){
+			draggableElem.classList.add("pulse", "objetive");
+			hasClickDraggable = true;
+		}
+
 		cellsElem.forEach((cellElem, i) => {
 			cellElem.classList.remove("hidden", "busy", "enable");
 			cellElem.innerHTML = i + 1;

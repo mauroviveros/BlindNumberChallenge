@@ -1,3 +1,14 @@
+## [1.1.1](https://github.com/maurodviveros/blindnumberchallenge/compare/v1.1.0...v1.1.1) (2023-05-14)
+
+
+### Features
+
+* :dizzy: add confetti on win ([97ba937](https://github.com/maurodviveros/blindnumberchallenge/commit/97ba9372e004f33c9e0fdeda49b449147dbdf11d))
+* :dizzy: add generateNUmber animation ([d57e009](https://github.com/maurodviveros/blindnumberchallenge/commit/d57e0097f2dd2df843cc301b488e05239897faec))
+* :lipstick: add disable state class ([9a5b804](https://github.com/maurodviveros/blindnumberchallenge/commit/9a5b8041cfb03014337a4db6814a93529517feb8))
+
+
+
 # [1.1.0](https://github.com/maurodviveros/blindnumberchallenge/compare/v1.0.8...v1.1.0) (2023-05-14)
 
 

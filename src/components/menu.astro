@@ -1,0 +1,30 @@
+---
+import Button from "./button.astro";
+
+interface Level{
+    _id: number
+    className: string
+    active?: boolean
+}
+
+export interface Props{
+    levels: Level[]
+}
+
+const { levels } = Astro.props;
+---
+
+<nav>
+    { levels.map(level => <Button text={level._id.toString()} className={level.className} active={level.active}/> ) }
+    <Button text="reload" className="reload" refresh={true}/>
+</nav>
+
+<style>
+    nav{
+        position: absolute;
+        left: -3rem;
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+    }
+</style>

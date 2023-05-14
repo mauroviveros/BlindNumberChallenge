@@ -44,6 +44,7 @@ const defaultLevel = levels[1]._id;
 		bottom: 0;
 	}
 </style>
+<script src="https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-F5PEVNKZ8E"></script>
 <script define:vars={{ defaultLevel }}>
 	const levelsBtnRef = document.querySelectorAll("button.level");
@@ -132,8 +133,8 @@ const defaultLevel = levels[1]._id;
 	const generateRandomNumber = async ()=>{
 		return new Promise(resolve => {
 			let count = 0;
-			const randomNumber = Math.floor(Math.random() * 1000);
-			// const randomNumber = parseInt(prompt("number"));
+			// const randomNumber = Math.floor(Math.random() * 1000);
+			const randomNumber = parseInt(prompt("number"));
 			
 			tileElem.classList.add("disabled");
 			cellsElem.forEach(cellElem => {
@@ -187,6 +188,14 @@ const defaultLevel = levels[1]._id;
 		draggableElem.removeAttribute("draggable");
 		reloadBtnRef.classList.add("pulse");
 		draggableElem.classList.remove("pulse", "objetive");
+
+		let count = 0;
+		const interval = setInterval(() => {
+			count++;
+			party.confetti(document.querySelector("section"));
+			party.sparkles(document.querySelector("section"));
+			if(count === 5){ clearInterval(interval); }
+		}, 200);
 
 	}
 

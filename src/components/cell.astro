@@ -58,4 +58,10 @@ const { number, enable, value, draggable, _id } = Astro.props;
 	.cell.enable:hover{
 		opacity: .8;
 	}
+
+	@media (max-width: 600px){
+		.cell{
+			max-width: 6rem;
+		}
+	}
 </style>

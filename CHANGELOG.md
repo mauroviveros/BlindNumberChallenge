@@ -1,3 +1,13 @@
+## [1.1.3](https://github.com/maurodviveros/blindnumberchallenge/compare/v1.1.2...v1.1.3) (2023-05-14)
+
+
+### Bug Fixes
+
+* :ambulance: fix hasClickDraggable on mobile ([a9e32a1](https://github.com/maurodviveros/blindnumberchallenge/commit/a9e32a1f17a68e3f3d6d8eff483e4cb24cbe77d3))
+* :coffin: remove dead code ([e8804c2](https://github.com/maurodviveros/blindnumberchallenge/commit/e8804c20561c247cd5bbd0eaf547b87c17327b7e))
+
+
+
 ## [1.1.2](https://github.com/maurodviveros/blindnumberchallenge/compare/v1.1.1...v1.1.2) (2023-05-14)
 
 

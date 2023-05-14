@@ -15,7 +15,7 @@ const { levels } = Astro.props;
 ---
 
 <nav>
-    { levels.map(level => <Button text={level._id.toString()} className={level.className} active={level.active}/> ) }
+    { levels.map(level => <Button text={level._id.toString()} className={level.className}/> ) }
     <Button text="reload" className="reload" refresh={true}/>
 </nav>
 

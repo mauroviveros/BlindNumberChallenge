@@ -8,9 +8,9 @@ const title = "Blind Number Challenge";
 const randomNumber = 999;
 
 const levels = [
-	{ _id: 2, className: "very-easy" },
-	{ _id: 5, className: "easy" },
-	{ _id: 10, className: "normal" },
+	{ _id: 2, className: "level very-easy" },
+	{ _id: 5, className: "level easy" },
+	{ _id: 10, className: "level normal" },
 ]
 const lastLevel = levels.at(-1) || { _id: 0 };
 const lastLevelCells = lastLevel._id;
@@ -26,6 +26,10 @@ const defaultLevel = levels[1]._id;
 		<GameBoard cells={cells} number={randomNumber}/>
 		<Menu levels={levels}/>
 	</main>
+
+	<footer>
+		<p>COPYRIGHT &copy; 2023 &mdash; <a href="https://github.com/maurodviveros" target="_blank">MAURO D. VIVEROS</a></p>
+	</footer>
 </Layout>
 
 <style>
@@ -35,10 +39,15 @@ const defaultLevel = levels[1]._id;
 		position: relative;
 		gap: .5rem;
 	}
+	footer{
+		position: absolute;
+		bottom: 0;
+	}
 </style>
 
 <script define:vars={{ defaultLevel }}>
-	let lastCell;
+	const levelsBtnRef = document.querySelectorAll("button.level");
+	const reloadBtnRef = document.querySelector("button#level-reload");
 	const gameBoardElem = document.querySelector(".game-board");
 	const messageElem = document.querySelector("section h2");
 	const draggableElem = document.querySelector(".cell[draggable]");
@@ -75,11 +84,16 @@ const defaultLevel = levels[1]._id;
 		});
 	});
 
-	const changeLevel = (level)=>{
-		window.localStorage.setItem("level", level.toString());
+	reloadBtnRef.addEventListener("click", () => { reload(); });
+	levelsBtnRef.forEach(levelBtnRef => {
+		levelBtnRef.addEventListener("click", () => { updateLevel(levelBtnRef.id); });
+	});
 
+	const storageLevel = (level)=>{
+		window.localStorage.setItem("level", level.toString());
 		return level.toString();
 	}
+
 	const generateRandomNumber = (lastCellElem)=>{
 		if(lastCellElem) lastCell = { id: parseInt(lastCellElem.id), number: parseInt(lastCellElem.innerHTML) }
 		tileElem.innerHTML = Math.floor(Math.random() * 1000);
@@ -88,7 +102,28 @@ const defaultLevel = levels[1]._id;
 
 	const _getLevel = ()=>{
 		let level = window.localStorage.getItem("level");
-		if(!level) level = changeLevel(defaultLevel);
+		if(!level) level = storageLevel(defaultLevel);
+
+		if(level <= 5){
+			gameBoardElem.style.setProperty("--rows", level);
+			gameBoardElem.style.setProperty("--columns", 1);
+		}
+		else{
+			gameBoardElem.style.setProperty("--rows", 5);
+			gameBoardElem.style.setProperty("--columns", level / 5);
+		}
+		
+		// grid-template-rows: repeat(5, 1fr);
+
+		const levelsRef = document.querySelectorAll(".level");
+		let activeLevelRef = document.querySelector(`.level#level-${level}`);
+		if(!activeLevelRef){
+			level = storageLevel(defaultLevel);
+			activeLevelRef = document.querySelector(`.level#level-${level}`);
+		}
+
+		levelsRef.forEach(level => level.classList.remove("active"));
+		activeLevelRef.classList.add("active");
 
 		return parseInt(level);
 	}
@@ -97,16 +132,18 @@ const defaultLevel = levels[1]._id;
 		gameBoardElem.classList.add("win");
 		messageElem.innerHTML = "You Win!";
 		draggableElem.removeAttribute("draggable");
+		reloadBtnRef.classList.add("pulse");
 	}
 
 	const loseGAME = ()=>{
 		gameBoardElem.classList.add("lose");
 		messageElem.innerHTML = "Lose! Try again";
 		draggableElem.removeAttribute("draggable");
+		reloadBtnRef.classList.add("pulse");
 	}
 
 	const reloadCells = ()=>{
-		const level = _getLevel('');
+		const level = _getLevel();
 
 		const tileNumber = parseInt(tileElem.innerHTML);
 		const cellsBusy = [];
@@ -143,8 +180,26 @@ const defaultLevel = levels[1]._id;
 		if(cells.length && !document.querySelectorAll(".cell.enable").length) return loseGAME();
 	};
 
-	nextStage = ()=>{
+	const nextStage = ()=>{
 		reloadCells();
+	}
+
+	const updateLevel = (levelID)=>{
+		const levelNum = parseInt(levelID.split("-")[1]);
+		storageLevel(levelNum);
+		reload();
+	};
+
+	const reload = ()=>{
+		gameBoardElem.classList.remove("lose", "win");
+		reloadBtnRef.classList.remove("pulse");
+		messageElem.innerHTML = "";
+		draggableElem.setAttribute("draggable", true);
+		cellsElem.forEach((cellElem, i) => {
+			cellElem.classList.remove("hidden", "busy", "enable");
+			cellElem.innerHTML = i + 1;
+		});
+		start();
 	}
 
 	const start = ()=>{

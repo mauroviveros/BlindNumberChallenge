@@ -1,3 +1,12 @@
+## [1.0.5](https://github.com/maurodviveros/blindnumberchallenge/compare/v1.0.4...v1.0.5) (2023-05-14)
+
+
+### Bug Fixes
+
+* :bug: fix pulse on reload level ([f7c0ac0](https://github.com/maurodviveros/blindnumberchallenge/commit/f7c0ac0ec41b4afc98d81fb216902ba1cbe1f28d))
+
+
+
 ## [1.0.4](https://github.com/maurodviveros/blindnumberchallenge/compare/v1.0.3...v1.0.4) (2023-05-14)
 
 

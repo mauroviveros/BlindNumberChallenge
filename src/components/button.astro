@@ -1,0 +1,59 @@
+---
+import Refresh from './icons/refresh.astro';
+
+
+export interface Props{
+    text: string
+    className: string
+    refresh?: boolean
+}
+
+const { text, refresh, className } = Astro.props;
+---
+
+<button id={"level-" + text} class:list={[className]}>
+    {refresh ? <Refresh/> : text }
+</button>
+
+<style>
+    button{
+        border: none;
+        padding: .5rem;
+        border-radius: 8px;
+        cursor: pointer;
+        width: 2.5rem;
+        height: 2.5rem;
+        line-height: 1.5rem;
+        font-size: 1.5rem;
+        border-width: 2px;
+        border-style: dashed;
+    }
+    button:hover{
+        opacity: .8;
+    }
+
+    button.very-easy{
+        background-color: rgb(78, 235, 182);
+        border-color: rgb(78, 235, 182);
+        color: rgb(17, 80, 59);
+    }
+    button.easy{
+        background-color: rgb(100, 238, 100);
+        border-color: rgb(100, 238, 100);
+        color: rgb(27, 70, 27);
+    }
+    button.normal{
+        background-color: rgb(255, 140, 0);
+        border-color: rgb(255, 140, 0);
+        color: rgb(83, 46, 0);
+    }
+    button.reload{
+        background-color: #ff9191;
+        border-color: #ff9191;
+    }
+
+    button.active{
+        border-color: rgba(0, 0, 0, .6);
+    }
+
+</style>

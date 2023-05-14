@@ -35,7 +35,9 @@ const isLost = false;
     .game-board{
         background-color: #825E82;
         display: grid;
-        grid-template-columns: repeat(, 1fr);
+        grid-auto-flow: column;
+        grid-template-columns: repeat(var(--columns), 1fr);
+        grid-template-rows: repeat(var(--rows), 1fr);
         gap: .5rem;
         padding: .5rem;
         border-radius: 8px;

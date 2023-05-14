@@ -54,6 +54,8 @@ const defaultLevel = levels[1]._id;
 	const cellsElem = document.querySelectorAll(".game-board .cell");
 	const tileElem  = document.querySelector(".cell#tile");
 
+	let hasClickDraggable = false;
+
 	
 
 	cellsElem.forEach(cellElem => {
@@ -77,12 +79,34 @@ const defaultLevel = levels[1]._id;
 			cellElem.classList.add("busy");
 			cellElem.innerHTML = randomNumber;
 
-			generateRandomNumber(cellElem);
+			generateRandomNumber();
 			nextStage();
-
-			
 		});
 	});
+	
+	draggableElem.addEventListener("click", () => {
+		draggableElem.classList.add("pulse", "objetive");
+		hasClickDraggable = true;
+	});
+
+	cellsElem.forEach(cellElem => {
+		cellElem.addEventListener("click", e => {
+			if(hasClickDraggable){
+				if(!cellElem.classList.contains("enable")) return;
+
+				const randomNumber = parseInt(tileElem.innerHTML);
+				cellElem.classList.remove("enable");
+				cellElem.classList.add("busy");
+				cellElem.innerHTML = randomNumber;
+
+				generateRandomNumber();
+				nextStage();
+				
+				draggableElem.classList.remove("pulse", "objetive");
+				hasClickDraggable = false;
+			}
+		})
+	})
 
 	reloadBtnRef.addEventListener("click", () => { reload(); });
 	levelsBtnRef.forEach(levelBtnRef => {
@@ -94,8 +118,7 @@ const defaultLevel = levels[1]._id;
 		return level.toString();
 	}
 
-	const generateRandomNumber = (lastCellElem)=>{
-		if(lastCellElem) lastCell = { id: parseInt(lastCellElem.id), number: parseInt(lastCellElem.innerHTML) }
+	const generateRandomNumber = ()=>{
 		tileElem.innerHTML = Math.floor(Math.random() * 1000);
 		// tileElem.innerHTML = parseInt(prompt("number"));
 	}
@@ -112,8 +135,6 @@ const defaultLevel = levels[1]._id;
 			gameBoardElem.style.setProperty("--rows", 5);
 			gameBoardElem.style.setProperty("--columns", level / 5);
 		}
-		
-		// grid-template-rows: repeat(5, 1fr);
 
 		const levelsRef = document.querySelectorAll(".level");
 		let activeLevelRef = document.querySelector(`.level#level-${level}`);

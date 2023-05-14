@@ -1,0 +1,156 @@
+---
+import GameBoard from "../components/game-board.astro";
+import Menu from "../components/menu.astro";
+
+import Layout from '../layouts/Layout.astro';
+
+const title = "Blind Number Challenge";
+const randomNumber = 999;
+
+const levels = [
+	{ _id: 2, className: "very-easy" },
+	{ _id: 5, className: "easy" },
+	{ _id: 10, className: "normal" },
+]
+const lastLevel = levels.at(-1) || { _id: 0 };
+const lastLevelCells = lastLevel._id;
+const cells = Array.from({length: lastLevelCells}, (_, i) => i + 1);
+
+const defaultLevel = levels[1]._id;
+
+---
+
+<Layout title={title}>
+	<h1>{title}</h1>
+	<main>
+		<GameBoard cells={cells} number={randomNumber}/>
+		<Menu levels={levels}/>
+	</main>
+</Layout>
+
+<style>
+	main{
+		display: flex;
+		flex-direction: row-reverse;
+		position: relative;
+		gap: .5rem;
+	}
+</style>
+
+<script define:vars={{ defaultLevel }}>
+	let lastCell;
+	const gameBoardElem = document.querySelector(".game-board");
+	const messageElem = document.querySelector("section h2");
+	const draggableElem = document.querySelector(".cell[draggable]");
+	const cellsElem = document.querySelectorAll(".game-board .cell");
+	const tileElem  = document.querySelector(".cell#tile");
+
+	
+
+	cellsElem.forEach(cellElem => {
+		cellElem.addEventListener("dragover", e => {
+			if(cellElem.classList.contains("objetive")) return e.preventDefault();
+			else if(cellElem.classList.contains("enable")) cellElem.classList.add("objetive");
+		});
+		cellElem.addEventListener("dragleave", e => {
+			if(cellElem.classList.contains("objetive")) cellElem.classList.remove("objetive");
+			else return e.preventDefault();
+		});
+	});
+
+	draggableElem.addEventListener("dragend", () => {
+		cellsElem.forEach(cellElem => {
+			if(!cellElem.classList.contains("objetive")) return;
+
+			const randomNumber = parseInt(tileElem.innerHTML);
+			cellElem.classList.remove("enable");
+			cellElem.classList.remove("objetive");
+			cellElem.classList.add("busy");
+			cellElem.innerHTML = randomNumber;
+
+			generateRandomNumber(cellElem);
+			nextStage();
+
+			
+		});
+	});
+
+	const changeLevel = (level)=>{
+		window.localStorage.setItem("level", level.toString());
+
+		return level.toString();
+	}
+	const generateRandomNumber = (lastCellElem)=>{
+		if(lastCellElem) lastCell = { id: parseInt(lastCellElem.id), number: parseInt(lastCellElem.innerHTML) }
+		tileElem.innerHTML = Math.floor(Math.random() * 1000);
+		// tileElem.innerHTML = parseInt(prompt("number"));
+	}
+
+	const _getLevel = ()=>{
+		let level = window.localStorage.getItem("level");
+		if(!level) level = changeLevel(defaultLevel);
+
+		return parseInt(level);
+	}
+
+	const winGAME = ()=>{
+		gameBoardElem.classList.add("win");
+		messageElem.innerHTML = "You Win!";
+		draggableElem.removeAttribute("draggable");
+	}
+
+	const loseGAME = ()=>{
+		gameBoardElem.classList.add("lose");
+		messageElem.innerHTML = "Lose! Try again";
+		draggableElem.removeAttribute("draggable");
+	}
+
+	const reloadCells = ()=>{
+		const level = _getLevel('');
+
+		const tileNumber = parseInt(tileElem.innerHTML);
+		const cellsBusy = [];
+		const cells = [];
+		cellsElem.forEach((cellElem, i) => {
+			cellElem.classList.remove("enable");
+			if(i >= level) return cellElem.classList.add("hidden");
+			if(cellElem.classList.contains("busy")) cellsBusy.push({ id: parseInt(cellElem.id), value: parseInt(cellElem.innerHTML), elem: cellElem });
+			else cells.push({ id: parseInt(cellElem.id), value: undefined, elem: cellElem });
+		});
+
+		const _getNearbyCellsBusy = () => {
+			let min, max;
+			for(const cellBusy of cellsBusy){
+				if(cellBusy.value > tileNumber && (!max || cellBusy.value < max.value)) max = cellBusy;
+				if(cellBusy.value < tileNumber && (!min || cellBusy.value > min.value)) min = cellBusy;
+			}
+			return [min, max];
+		}
+
+		const _canEnable = (cell) => {
+			const [ firstBusyCell, lastBusyCell ] = _getNearbyCellsBusy();
+			if(!cellsBusy.length) return true;
+			if(!!firstBusyCell && !lastBusyCell) return cell.id > firstBusyCell.id;
+			if(!!lastBusyCell && !firstBusyCell) return cell.id < lastBusyCell.id;
+			if(!!firstBusyCell && !!lastBusyCell) return firstBusyCell.id < cell.id && cell.id < lastBusyCell.id;
+		}
+
+		cells.forEach(cell => {
+			if(_canEnable(cell)) cell.elem.classList.add("enable");
+		});
+
+		if(!cells.length) return winGAME();
+		if(cells.length && !document.querySelectorAll(".cell.enable").length) return loseGAME();
+	};
+
+	nextStage = ()=>{
+		reloadCells();
+	}
+
+	const start = ()=>{
+		generateRandomNumber();
+		reloadCells();
+	};
+
+	start();
+</script>

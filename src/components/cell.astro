@@ -30,7 +30,7 @@ const { number, enable, value, draggable, _id } = Astro.props;
 	}
 
 	.cell[draggable]{
-		cursor: move;
+		cursor: grab;
 	}
 	.cell.enable{
 		cursor: pointer;
@@ -38,9 +38,7 @@ const { number, enable, value, draggable, _id } = Astro.props;
 		border-color: #9cce99;
     	color: #83ad81;
 	}
-	.cell.objetive{
-		border-color: orange;
-	}
+	
 	.cell.busy{
 		border-color: #FFF;
 		background-color: #FFF;
@@ -49,9 +47,15 @@ const { number, enable, value, draggable, _id } = Astro.props;
 	.cell.hidden{
 		display: none;
 	}
-
+	
 	.cell#tile{
 		background-color: rgb(240, 248, 255);
 		border-color: rgb(240, 248, 255);
+	}
+	.cell.objetive, .cell.enable:hover{
+		border-color: orange !important;
+	}
+	.cell.enable:hover{
+		opacity: .8;
 	}
 </style>

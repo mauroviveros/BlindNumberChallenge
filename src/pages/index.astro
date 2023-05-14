@@ -55,6 +55,7 @@ const defaultLevel = levels[1]._id;
 	const tileElem  = document.querySelector(".cell#tile");
 
 	let hasClickDraggable = false;
+	let isMobile = false;
 
 	
 
@@ -85,6 +86,8 @@ const defaultLevel = levels[1]._id;
 	});
 	
 	draggableElem.addEventListener("click", () => {
+		const _cellEnable = document.querySelectorAll(".cell.enable");
+		if(!_cellEnable.length) return;
 		draggableElem.classList.add("pulse", "objetive");
 		hasClickDraggable = true;
 	});
@@ -102,8 +105,10 @@ const defaultLevel = levels[1]._id;
 				generateRandomNumber();
 				nextStage();
 				
-				draggableElem.classList.remove("pulse", "objetive");
-				hasClickDraggable = false;
+				if(!isMobile){
+					draggableElem.classList.remove("pulse", "objetive");
+					hasClickDraggable = false;
+				}
 			}
 		})
 	})
@@ -154,6 +159,7 @@ const defaultLevel = levels[1]._id;
 		messageElem.innerHTML = "You Win!";
 		draggableElem.removeAttribute("draggable");
 		reloadBtnRef.classList.add("pulse");
+		draggableElem.classList.remove("pulse", "objetive");
 	}
 
 	const loseGAME = ()=>{
@@ -161,6 +167,7 @@ const defaultLevel = levels[1]._id;
 		messageElem.innerHTML = "Lose! Try again";
 		draggableElem.removeAttribute("draggable");
 		reloadBtnRef.classList.add("pulse");
+		draggableElem.classList.remove("pulse", "objetive");
 	}
 
 	const reloadCells = ()=>{
@@ -227,6 +234,19 @@ const defaultLevel = levels[1]._id;
 		generateRandomNumber();
 		reloadCells();
 	};
+
+	if (navigator.userAgent.match(/Android/i)
+	 || navigator.userAgent.match(/webOS/i)
+	 || navigator.userAgent.match(/iPhone/i)
+	 || navigator.userAgent.match(/iPad/i)
+	 || navigator.userAgent.match(/iPod/i)
+	 || navigator.userAgent.match(/BlackBerry/i)
+	 || navigator.userAgent.match(/Windows Phone/i)){
+		isMobile = true;
+		draggableElem.classList.add("pulse", "objetive");
+		hasClickDraggable = true;
+
+	}
 
 	start();
 </script>

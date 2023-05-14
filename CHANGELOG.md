@@ -1,3 +1,12 @@
+## [1.0.8](https://github.com/maurodviveros/blindnumberchallenge/compare/v1.0.7...v1.0.8) (2023-05-14)
+
+
+### Bug Fixes
+
+* :poop: fix poop code ([e07d3f3](https://github.com/maurodviveros/blindnumberchallenge/commit/e07d3f3d94040aa0ef1e8600d02a353bfbe91307))
+
+
+
 ## [1.0.7](https://github.com/maurodviveros/blindnumberchallenge/compare/v1.0.6...v1.0.7) (2023-05-14)
 
 

@@ -1,3 +1,12 @@
+## [1.0.6](https://github.com/maurodviveros/blindnumberchallenge/compare/v1.0.5...v1.0.6) (2023-05-14)
+
+
+### Features
+
+* :bento: add favicon ([a1ddaf6](https://github.com/maurodviveros/blindnumberchallenge/commit/a1ddaf60e3582c779cde0d2ce689c8fc934890a2))
+
+
+
 ## [1.0.5](https://github.com/maurodviveros/blindnumberchallenge/compare/v1.0.4...v1.0.5) (2023-05-14)
 
 

@@ -1,3 +1,12 @@
+## [1.0.7](https://github.com/maurodviveros/blindnumberchallenge/compare/v1.0.6...v1.0.7) (2023-05-14)
+
+
+### Bug Fixes
+
+* :adhesive_bandage: fix favicon ([eb217b9](https://github.com/maurodviveros/blindnumberchallenge/commit/eb217b9b131a2f2990fba023d2211da0beb77bc1))
+
+
+
 ## [1.0.6](https://github.com/maurodviveros/blindnumberchallenge/compare/v1.0.5...v1.0.6) (2023-05-14)
 
 

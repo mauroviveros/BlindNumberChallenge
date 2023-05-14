@@ -1,3 +1,12 @@
+## [1.0.1](https://github.com/maurodviveros/blindnumberchallenge/compare/v1.0.0...v1.0.1) (2023-05-14)
+
+
+### Bug Fixes
+
+* :see_no_evil: ignore package-lock ([b71c448](https://github.com/maurodviveros/blindnumberchallenge/commit/b71c448e658d3c41ac5ecbc3df3b12d7b58fe307))
+
+
+
 # 1.0.0 (2023-05-14)
 
 

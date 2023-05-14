@@ -1,0 +1,57 @@
+---
+export interface Props {
+	_id: string
+	number: number
+	enable?: boolean
+	value?: number
+	draggable?: boolean
+}
+
+const { number, enable, value, draggable, _id } = Astro.props;
+---
+
+
+<div  id={_id} class="cell" class:list={[{ enable: enable, busy: value }]} draggable={draggable}>
+	{value ? value : number}
+</div>
+
+
+<style>
+	.cell{
+		border: 3px solid;
+		background-color: #AE8FAE;
+		border-color: #AE8FAE;
+		color: #825E82;
+		border-radius: 8px;
+		text-align: center;
+		font-size: 2rem;
+		width: 12rem;
+		user-select: none;
+	}
+
+	.cell[draggable]{
+		cursor: move;
+	}
+	.cell.enable{
+		cursor: pointer;
+		background-color: #9cce99;
+		border-color: #9cce99;
+    	color: #83ad81;
+	}
+	.cell.objetive{
+		border-color: orange;
+	}
+	.cell.busy{
+		border-color: #FFF;
+		background-color: #FFF;
+		color: #000;
+	}
+	.cell.hidden{
+		display: none;
+	}
+
+	.cell#tile{
+		background-color: rgb(240, 248, 255);
+		border-color: rgb(240, 248, 255);
+	}
+</style>

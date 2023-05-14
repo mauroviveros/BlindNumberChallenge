@@ -1,3 +1,12 @@
+# [1.1.0](https://github.com/maurodviveros/blindnumberchallenge/compare/v1.0.8...v1.1.0) (2023-05-14)
+
+
+### Features
+
+* :chart_with_upwards_trend: add google analytics ([633e4a2](https://github.com/maurodviveros/blindnumberchallenge/commit/633e4a280c8a0f444a2e7ce0e0514855c15f8cd6))
+
+
+
 ## [1.0.8](https://github.com/maurodviveros/blindnumberchallenge/compare/v1.0.7...v1.0.8) (2023-05-14)
 
 

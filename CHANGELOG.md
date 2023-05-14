@@ -1,3 +1,17 @@
+## [1.0.4](https://github.com/maurodviveros/blindnumberchallenge/compare/v1.0.3...v1.0.4) (2023-05-14)
+
+
+### Bug Fixes
+
+* :iphone: fix cell max-width on mobile ([bc5c369](https://github.com/maurodviveros/blindnumberchallenge/commit/bc5c369effb69756250524f96e3086b0a86bc927))
+
+
+### Features
+
+* :iphone: better controllers on mobile ([3168dd0](https://github.com/maurodviveros/blindnumberchallenge/commit/3168dd06adc6bef11d11e268e76d9c8a082394b5))
+
+
+
 ## [1.0.3](https://github.com/maurodviveros/blindnumberchallenge/compare/v1.0.2...v1.0.3) (2023-05-14)
 
 

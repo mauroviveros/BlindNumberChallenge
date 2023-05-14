@@ -44,7 +44,7 @@ const defaultLevel = levels[1]._id;
 		bottom: 0;
 	}
 </style>
-
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F5PEVNKZ8E"></script>
 <script define:vars={{ defaultLevel }}>
 	const levelsBtnRef = document.querySelectorAll("button.level");
 	const reloadBtnRef = document.querySelector("button#level-reload");
@@ -56,6 +56,11 @@ const defaultLevel = levels[1]._id;
 
 	let hasClickDraggable = false;
 	let isMobile = false;
+
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-F5PEVNKZ8E');
 
 	
 
@@ -155,19 +160,25 @@ const defaultLevel = levels[1]._id;
 	}
 
 	const winGAME = ()=>{
+		gtag("send", "game_win", { event_name: "win", value: true });
+		gtag('set', 'game', 'win');
 		gameBoardElem.classList.add("win");
 		messageElem.innerHTML = "You Win!";
 		draggableElem.removeAttribute("draggable");
 		reloadBtnRef.classList.add("pulse");
 		draggableElem.classList.remove("pulse", "objetive");
+
 	}
 
 	const loseGAME = ()=>{
+		gtag("send", "game_lose", { event_name: "lose", value: false });
+		gtag('set', 'game', 'lose');
 		gameBoardElem.classList.add("lose");
 		messageElem.innerHTML = "Lose! Try again";
 		draggableElem.removeAttribute("draggable");
 		reloadBtnRef.classList.add("pulse");
 		draggableElem.classList.remove("pulse", "objetive");
+
 	}
 
 	const reloadCells = ()=>{

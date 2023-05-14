@@ -29,7 +29,7 @@ const { number, enable, value, draggable, _id } = Astro.props;
 		user-select: none;
 	}
 
-	.cell[draggable]{
+	.cell[draggable]:not(.disabled){
 		cursor: grab;
 	}
 	.cell.enable{
@@ -57,6 +57,11 @@ const { number, enable, value, draggable, _id } = Astro.props;
 	}
 	.cell.enable:hover{
 		opacity: .8;
+	}
+
+	.cell.disabled{
+		background-color: #bdbdbd !important;
+		border-color: #bdbdbd !important;
 	}
 
 	@media (max-width: 600px){

@@ -1,3 +1,12 @@
+## [1.1.4](https://github.com/maurodviveros/blind_number_challenge/compare/v1.1.3...v1.1.4) (2023-05-17)
+
+
+### Bug Fixes
+
+* :truck: rename config base ([1677eb0](https://github.com/maurodviveros/blind_number_challenge/commit/1677eb07978f893370a12771aa643f2457565e86))
+
+
+
 ## [1.1.3](https://github.com/maurodviveros/blind_number_challenge/compare/v1.1.2...v1.1.3) (2023-05-14)
 
 

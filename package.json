@@ -1,26 +1,24 @@
 {
-  "name": "blind_number_challenge",
-  "description": "#BlindNumberChallenge",
+  "name": "blindnumberchallenge",
+  "description": "Blind Number Challenge playable on a website",
   "author": "Mauro Daniel Viveros <maurod.viveros@gmail.com> (TRY Ubbe)",
-  "version": "1.1.4",
   "license": "MIT",
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "astro dev",
+    "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
-    "postversion": "git push && git push --tags"
+    "astro": "astro"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/maurodviveros/blind_number_challenge.git"
+    "url": "git+https://github.com/mauroviveros/BlindNumberChallenge.git"
   },
   "dependencies": {
-    "astro": "2.4.1"
-  },
-  "devDependencies": {
-    "conventional-changelog-cli": "2.2.2"
+    "@fontsource/bebas-neue": "^5.2.7",
+    "@tailwindcss/vite": "^4.1.14",
+    "astro": "^5.14.1",
+    "tailwindcss": "^4.1.14"
   }
 }

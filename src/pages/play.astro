@@ -1,0 +1,24 @@
+---
+import Cell from "components/Cell.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+  <!-- <header></header> -->
+  <main class="flex-1 w-full flex flex-col gap-8">
+    <div class="container mx-auto flex-1 flex items-center justify-center">
+      <section class="grid grid-cols-1 gap-2">
+        <Cell number={1}/>
+        <Cell number={2}/>
+        <Cell number={3}/>
+        <Cell number={4}/>
+        <Cell number={5}/>
+      </section>
+
+    </div>
+    <section class="w-full bg-primary/50 text-black/90 text-3xl p-8">
+      <p class="text-balance text-center">Press here to show a random number</p>
+    </section>
+  </main>
+  <!-- <footer></footer> -->
+</Layout>

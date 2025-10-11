@@ -18,7 +18,7 @@
   "dependencies": {
     "@fontsource/bebas-neue": "^5.2.7",
     "@tailwindcss/vite": "^4.1.14",
-    "astro": "^5.14.1",
+    "astro": "^5.14.3",
     "tailwindcss": "^4.1.14"
   }
 }
